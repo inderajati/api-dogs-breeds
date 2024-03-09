@@ -1,0 +1,8 @@
+host: localhost:3002
+info:
+  contact: {}
+  description: This is a simple API service for Dog Breeds consume from the Dog API.
+  title: API for Dog Breeds
+  version: "1.0"
+paths: {}
+swagger: "2.0"
