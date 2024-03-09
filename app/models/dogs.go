@@ -6,3 +6,7 @@ type Dogs struct {
 	Breed    string `json:"breed"`
 	SubBreed string `json:"sub-breed"`
 }
+
+type Response struct {
+	Message string `json:"message"`
+}

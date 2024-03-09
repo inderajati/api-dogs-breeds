@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"app/controllers/fetchDogBreeds/app/utils"
+	"app/controllers/app/utils"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -15,6 +15,14 @@ type ResponseMessage struct {
 	Message []string `json:"message"`
 }
 
+// Handle Get List Sub Breeds
+// @Summary Get all sub breeds
+// @Description get all sub breeds
+// @ID get-list-sub-breeds
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} ResponseMessage
+// @Router /breed/{sub-breed}/list [get]
 func GetListSubBreeds(c echo.Context) (err error) {
 	var bodyBytes []byte
 	subBreedParam := c.Param("sub-breed")

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"app/controllers/fetchDogBreeds/app/utils"
+	"app/controllers/app/utils"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -22,7 +22,14 @@ type DogBreadImages struct {
 	Message []string `json:"message"`
 }
 
-
+// Handle Get List Breeds
+// @Summary Get all breeds
+// @Description get all breeds
+// @ID get-list-breeds
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} DogBreeds
+// @Router /breeds/list/all [get]
 func GetListBreeds(c echo.Context) (err error) {
 	var bodyBytes []byte
 	// request body
@@ -54,6 +61,14 @@ func GetListBreeds(c echo.Context) (err error) {
 	return c.JSON(http.StatusOK, u)
 }
 
+// Handle Get List Breed Images
+// @Summary Get all breed images
+// @Description get all breed images
+// @ID get-list-breed-images
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} DogBreadImages
+// @Router /breed/{breed}/images [get]
 func GetListBreedImages(c echo.Context) (err error) {
 	var bodyBytes []byte
 	breedParam := c.Param("breed")

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"app/controllers/fetchDogBreeds/app/config"
-	"app/controllers/fetchDogBreeds/app/models"
+	"app/controllers/app/config"
+	"app/controllers/app/models"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -12,9 +12,9 @@ import (
 // @Summary Show dog list
 // @Description get dog list
 // @ID get-dog-list
-// @Accept  json
-// @Produce  json
-// @Success 200 {object} Dogs
+// @Accept json
+// @Produce json
+// @Success 200 {object} []models.Dogs
 // @Router /dogs [get]
 func GetAllDogs(c echo.Context) error {
 	db := config.DB()
@@ -38,7 +38,7 @@ func GetAllDogs(c echo.Context) error {
 // @ID create-dog
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} Message "Dog created successfully"
+// @Success 200 {object} models.Response
 // @Router /dog [post]
 func CreateDog(c echo.Context) error {
 	d := new(models.Dogs)
@@ -67,8 +67,8 @@ func CreateDog(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, data)
 	}
 
-	response := map[string]interface{}{
-		"message": "Dog created successfully",
+	response := models.Response{
+		Message: "Dog created successfully",
 	}
 
 	return c.JSON(http.StatusOK, response)
@@ -81,7 +81,7 @@ func CreateDog(c echo.Context) error {
 // @Accept  json
 // @Produce  json
 // @Param id path int true "Dog ID"
-// @Success 200 {object} Message "Dog updated successfully"
+// @Success 200 {object} models.Response
 // @Router /dogs/{id} [put]
 func UpdateDog(c echo.Context) error {
 	id := c.Param("id")
@@ -118,8 +118,8 @@ func UpdateDog(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, data)
 	}
 
-	response := map[string]interface{}{
-		"message": "Dog updated successfully",
+	response := models.Response{
+		Message: "Dog updated successfully",
 	}
 
 	return c.JSON(http.StatusOK, response)
@@ -132,7 +132,7 @@ func UpdateDog(c echo.Context) error {
 // @Accept  json
 // @Produce  json
 // @Param id path int true "Dog ID"
-// @Success 200 {object} Message "a dog has been deleted"
+// @Success 200 {object} models.Response
 // @Router /dogs/{id} [delete]
 func DeleteDog(c echo.Context) error {
 	id := c.Param("id")
@@ -149,8 +149,8 @@ func DeleteDog(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, data)
 	}
 
-	response := map[string]interface{}{
-		"message": "a dog has been deleted",
+	response := models.Response{
+		Message: "Dog has been deleted",
 	}
 	return c.JSON(http.StatusOK, response)
 }
